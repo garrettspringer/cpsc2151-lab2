@@ -2,17 +2,18 @@ package cpsc2150.lab2;
 
 import java.util.Scanner;
 
+
 public class MatrixApp
 {
     public static void main(String[] args)
     {
         System.out.println("How many rows should your maxtrix have?");
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); //to get input from the user
         int rows = input.nextInt();
         System.out.println("How many columns should your matrix have?");
         int columns = input.nextInt();
-        int[][] matrix = new int[rows][columns];
-        for (int i = 0; i < rows; i++)
+        int[][] matrix = new int[rows][columns]; //user-generated matrix to be filled
+        for (int i = 0; i < rows; i++) //fills the matrix with user input
         {
             for (int j = 0; j < columns; j++)
             {
@@ -20,9 +21,10 @@ public class MatrixApp
                 matrix[i][j] = input.nextInt();
             }
         }
-        input.close();
+        input.close(); //scanner no longer needed
         System.out.println("Your matrix is:");
-        for (int i = 0; i < rows; i++)
+        for (int i = 0; i < rows; i++) //displays matrix for user2
+
         {
             for (int j = 0; j < columns; j++)
             {
@@ -44,6 +46,13 @@ public class MatrixApp
 
     }
 
+    /**
+     *
+     * @param prev the matrix to be transposed
+     * @param r the number of rows in prev
+     * @param c the number of columns in prev
+     * @return the transposed matrix "next"
+     */
     private static int[][] Transpose(int[][] prev, int r, int c)
     {
         //
@@ -58,6 +67,13 @@ public class MatrixApp
         return next;
     }
 
+    /**
+     *
+     * @param m the matrix to be summed
+     * @param r the number of rows in m
+     * @param c the number of columns in m
+     * @return the product of the sums of the rows in m
+     */
     private static int sumProduct(int[][] m, int r, int c)
     {
         int total = 1;
@@ -75,6 +91,14 @@ public class MatrixApp
         }
         return total;
     }
+
+    /**
+     *
+     * @param m the matrix to be averaged
+     * @param r the number of rows in m
+     * @param c the number of columns in m
+     * @return the average of all numbers in m
+     */
     private static double average(int[][] m, int r, int c)
     {
         double total = 0;
@@ -87,6 +111,14 @@ public class MatrixApp
         }
         return total/(r*c);
     }
+
+    /**
+     *
+     * @param m the matrix to be column summed
+     * @param r the number of rows in m
+     * @param c the number of columns in m
+     * @return the sum of all the columns in m
+     */
     private static int[] colSum(int[][] m, int r, int c)
     {
         int[] sums= new int[c];
@@ -101,6 +133,14 @@ public class MatrixApp
         System.out.println();
         return sums;
     }
+
+    /**
+     *
+     * @param m the matrix to be row summed
+     * @param r the number of rows in m
+     * @param c the number of columns in m
+     * @return the sum of all of the rows in m
+     */
     private static int[] rowSum(int[][] m, int r, int c)
     {
         int[] sums= new int[r];
@@ -117,6 +157,13 @@ public class MatrixApp
 
         return sums;
     }
+
+    /**
+     *
+     * @param m the matrix to be printed
+     * @param r the number of rows in m
+     * @param c the number of columns in m
+     */
     private static void print(int[][] m, int r, int c)
     {
         for (int i = 0; i < r; i++) {
