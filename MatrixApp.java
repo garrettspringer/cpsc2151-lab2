@@ -36,30 +36,32 @@ public class MatrixApp
         }
         input.close(); //scanner no longer needed
         System.out.println("Your matrix is:");
-        for (int i = 0; i < rows; i++) //displays matrix for user2
-
-        {
-            for (int j = 0; j < columns; j++)
-            {
-                System.out.print("| " + matrix[i][j] + " |");
-            }
-            System.out.println();
-        }
+        System.out.println(print(matrix,rows,columns)); //prints the created matrix
 
         int[][] testTranspose = Transpose(matrix, rows, columns);
 
         // Displays the results of the matrix functions on the command line
         System.out.println("The transposed matrix is: ");
-        print(testTranspose, columns, rows);
+        System.out.println(print(testTranspose, columns, rows)); //prints transposed matric
         System.out.println("The product sum is: ");
-        System.out.println(sumProduct(matrix, rows,columns));
+        System.out.println(sumProduct(matrix, rows,columns)); //prints product sum
         System.out.println("The average is: ");
-        System.out.println(average(matrix, rows, columns));
+        System.out.println(average(matrix, rows, columns)); // prints average
         System.out.println("The sums of each Row are: ");
-        rowSum(matrix, rows, columns);
+        int[] tempArray; //array to hold results of romSum and colSum
+        tempArray = rowSum(matrix, rows,columns);
+        for (int i = 0; i < rows; i++)
+        {
+            System.out.print("| "+tempArray[i] + " | "); //prints the rowSums
+        }
+        System.out.println();
         System.out.println("The sums of each Column are:");
-        colSum(matrix, rows, columns);
-
+        tempArray = colSum(matrix, rows,columns);
+        for (int i = 0; i < columns; i++)
+        {
+            System.out.print("| "+tempArray[i] + " | "); //prints the colSums
+        }
+        System.out.println();
     }
 
     /**
@@ -144,9 +146,8 @@ public class MatrixApp
             {
                 sums[i] += m[j][i];
             }
-            System.out.print("|"+sums[i]+"|");
+
         }
-        System.out.println();
         return sums;
     }
 
@@ -167,10 +168,7 @@ public class MatrixApp
                 sums[i] += m[i][j];
 
             }
-            System.out.print("|"+sums[i]+"|");
         }
-        System.out.println();
-
         return sums;
     }
 
@@ -180,13 +178,15 @@ public class MatrixApp
      * @param r the number of rows in m
      * @param c the number of columns in m
      */
-    private static void print(int[][] m, int r, int c)
+    private static String print(int[][] m, int r, int c)
     {
+        String result = "";
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
-                System.out.print("| " + m[i][j] + " |");
+                result += ("| " + m[i][j] + " | ");
             }
-            System.out.println();
+            result += "\n";
         }
+        return result;
     }
 }
